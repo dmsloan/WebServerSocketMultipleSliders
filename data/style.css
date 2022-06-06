@@ -1,0 +1,130 @@
+/*  Complete project details: https://randomnerdtutorials.com/esp32-web-server-websocket-sliders/  */
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    text-align: center;
+  }
+  h1 {
+    font-size: 1.8rem;
+    color: white;
+  }
+  p {
+    font-size: 1.4rem;
+  }
+  .topnav {
+    overflow: hidden;
+    background-color: #0A1128;
+  }
+  body {
+    margin: 0;
+  }
+  .content {
+    padding: 30px;
+  }
+  .card-grid {
+    max-width: 700px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .card {
+    background-color: white;
+    box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+  }
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #034078
+  }
+  .state {
+    font-size: 1.2rem;
+    color:#1282A2;
+  }
+  .slider {
+    -webkit-appearance: none;
+    margin: 0 auto;
+    width: 80%;
+    height: 15px;
+    border-radius: 10px;
+    background: #FFD65C;
+    outline: none;
+  }
+  .sliderck {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    border-radius: 30px
+  }
+  .sliderck:before {
+    position: absolute;
+    content: "";
+    height: 50px; width: 52px; left: 8px; bottom: 8px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 30px}
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #034078;
+    cursor: pointer;
+  }
+
+  input:checked+.sliderck {
+    background-color: #2196F3
+  }
+
+  input:focus + .sliderck {
+    box-shadow: 5 5 5px #2196F3
+  }
+
+  input:checked+.sliderck:before {
+    -webkit-transform: translateX(52px);
+    -ms-transform: translateX(52px);
+    transform: translateX(85px)
+  }
+
+  /* The switch - the box around the control */
+  .switch {
+    position: relative;
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 15px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .toggleSwitch input {
+    display: none;
+  }
+  
+  .toggleSwitch {
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    border-radius: 33px
+  }
+  .toggleSwitch:before {
+    position: absolute;
+    content: "";
+    height: 52px; width: 52px; left: 0px; bottom: 0px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 30px}
+    
+    input:checked+.toggleSwitch {background-color: #2196F3}
+    
+    input:focus + .toggleSwitch {box-shadow: 5 5 5px #2196F3}
+
+input:checked+.toggleSwitch:before {
+  -webkit-transform: translateX(52px);
+  -ms-transform: translateX(52px);
+  transform: translateX(52px)
+}
