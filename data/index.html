@@ -31,12 +31,12 @@
             <div class="card">
                 <p class="card-title">Power</p>
                 <!-- <p class="switch"> -->
-                    <label class = "switch">
-                        <input type="checkbox" onchange="updateSliderPWM(this)" id="chargerPower">
-                        <span class = "toggleSwitch"></span>
+                    <label class = "toggle" for="chargerPower">
+                    <input type="checkbox" class = "toggle__input" onchange="updateSliderPWM(this)" id="chargerPower">
+                        <div class = "toggle__fill"></div>
                     </label><br>
                 <!-- </p> -->
-                <p class="state">Charger is <span id="sliderValue3"></span></p>
+                <p class="state">Charger is <span id="state">%STATE%</span></p>
             </div>
         </div>
     </div>

@@ -16,7 +16,7 @@
 #include "SPIFFS.h"
 #include <Arduino_JSON.h>
 #include "secrets.h"
-#include "../../LibHelpers/WifiHelper.cpp"
+//#include "../../LibHelpers/WifiHelper.cpp"
 
 // Replace with your network credentials
 const char* ssid = SSIDa;
@@ -36,17 +36,14 @@ const int ledPin3 = 12;
 String message = "";
 String sliderValue1 = "0";
 String sliderValue2 = "0";
-String sliderValue3 = "0";
 
 int dutyCycle1;
 int dutyCycle2;
-int dutyCycle3;
 
 // setting PWM properties
 const int freq = 5000;
 const int ledChannel1 = 0;
 const int ledChannel2 = 1;
-const int ledChannel3 = 2;
 
 const int resolution = 8;
 
@@ -57,7 +54,6 @@ JSONVar sliderValues;
 String getSliderValues(){
   sliderValues["sliderValue1"] = String(sliderValue1);
   sliderValues["sliderValue2"] = String(sliderValue2);
-  sliderValues["sliderValue3"] = String(sliderValue3);
 
   String jsonString = JSON.stringify(sliderValues);
   return jsonString;
@@ -167,13 +163,10 @@ void setup() {
   // configure LED PWM functionalitites
   ledcSetup(ledChannel1, freq, resolution);
   ledcSetup(ledChannel2, freq, resolution);
-  ledcSetup(ledChannel3, freq, resolution);
 
   // attach the channel to the GPIO to be controlled
   ledcAttachPin(ledPin1, ledChannel1);
   ledcAttachPin(ledPin2, ledChannel2);
-  ledcAttachPin(ledPin3, ledChannel3);
-
 
   initWebSocket();
   
@@ -192,7 +185,7 @@ void setup() {
 void loop() {
   ledcWrite(ledChannel1, dutyCycle1);
   ledcWrite(ledChannel2, dutyCycle2);
-  ledcWrite(ledChannel3, dutyCycle3);
+  
 
   ws.cleanupClients();
 }
