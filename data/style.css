@@ -120,11 +120,11 @@ input:checked+.sliderck:before {
 
 .toggle {
   /* the following create variables that we can use elsewhere */
+  display: inline-block;
+  cursor: pointer;
   --width: 60px;
   --height: calc(var(--width) /2);
   --border-radius: calc(var(--height)/2);
-  display: inline-block;
-  cursor: pointer;
 }
 
 /* Hide default HTML checkbox */
@@ -136,6 +136,7 @@ input:checked+.sliderck:before {
   /* left: -9999px; */
 }
 
+/* When the input is checked change the background color */
 .toggle__input:checked~.toggle__fill {
   background: #79cfee;
 }
@@ -149,7 +150,7 @@ input:checked+.sliderck:before {
   /* transition: background 0.5s; */
 }
 
-.toggle__fill:after {
+.toggle__fill::before {
   content: "";
   position: absolute;
   top: 0;
@@ -157,21 +158,19 @@ input:checked+.sliderck:before {
   height: var(--height);
   width: calc(var(--width)/2);
   background: #034078;
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 1.0);
   border-radius: var(--border-radius);
   transition: transform 0.5s;
 }
 
-.toggle__input:checked~.toggle__fill::after {
+.toggle__fill:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1.0);
+}
+
+.toggle__input:checked~.toggle__fill::before {
   transform: translateX(var(--height));
   box-shadow: 0px 0px 30px green;
 }
 
-
-
 .toggle__input:checked+.toggle {
   background-color: #7be684
 }
-
-/* This is working but it on all the time it is selected by the keyboard or mouse. In addition the checkbox must be visable */
-.toggle__fill:focus ~ .toggle__fill {background: #7be684;}

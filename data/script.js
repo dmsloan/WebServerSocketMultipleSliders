@@ -38,6 +38,16 @@ function updateSliderPWM(element) {
     websocket.send(sliderNumber+"s"+sliderValue.toString());
 }
 
+function updateOutput(element) {
+    var outputNumber = element.id.charAt(element.id.length-1);
+    var outputValue = document.getElementById(element.id).value;
+    // document.getElementById("outputValue"+outputNumber).innerHTML = outputValue;
+    console.log(element.id);
+    console.log(outputNumber);
+    console.log(outputValue);
+    websocket.send(outputNumber+"s"+outputValue.toString());
+}
+
 function onMessage(event) {
     console.log(event.data);
     var myObj = JSON.parse(event.data);
